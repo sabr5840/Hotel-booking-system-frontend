@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us</title>
+  <title>QuickBook</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -20,7 +20,7 @@
     }
 
     header img {
-      width: 200px;
+      width: 200px; /* Just an example width, adjust as needed */
     }
 
     nav {
@@ -41,6 +41,12 @@
       margin: 0 10px;
     }
 
+    /* Updated styles for Home and About links */
+    nav li:nth-child(1) a,
+    nav li:nth-child(2) a {
+      color: #f6e2b8; /* Set the color to white */
+    }
+
     main {
       padding: 20px;
     }
@@ -51,18 +57,12 @@
       text-align: center;
       padding: 10px;
     }
-
-    nav li:nth-child(1) a,
-    nav li:nth-child(2) a,
-    nav li:nth-child(3) a {
-      color: #f6e2b8;
-    }
   </style>
 </head>
 <body>
 <header>
-  <a href="index.html"><img src="../img/Quickbook_logo.png" alt="QuickBook Logo"/></a>
-  <h1>About Us</h1>
+
+  <a href="index.html"><img src="../static/img/Quickbook_logo.png" alt="QuickBook Logo"/></a>
 </header>
 
 <nav>
@@ -73,11 +73,22 @@
 </nav>
 
 <main>
-  <h2>About QuickBook</h2>
-  <p>Welcome to QuickBook, your one-stop solution for hotel bookings worldwide. We are dedicated to making your travel experience seamless and enjoyable. With our service, you can book from a selection of over 250 hotels around the globe.</p>
+  <h2>Contact Information</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet ligula et libero tincidunt tincidunt ut nec urna. Sed vehicula mauris vel dolor convallis, ut tristique tortor euismod. Ut nec tristique odio. Nulla facilisi.</p>
 
-  <h2>Our Mission</h2>
-  <p>Our mission is to provide you with the best hotel booking experience possible. We strive to offer a wide range of options, competitive prices, and exceptional customer service. Whether you're traveling for business or leisure, QuickBook has you covered.</p>
+  <h2>Contact Form</h2>
+  <form>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name"><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email"><br><br>
+
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
+
+    <input type="submit" value="Submit">
+  </form>
 </main>
 
 

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickBook</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f6e2b8;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: white;
+            color: #f6e2b8;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header img {
+            width: 200px;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        form {
+            margin: 0 auto;
+            width: 50%;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+        }
+
+        form input[type="text"],
+        form input[type="number"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        form input[type="submit"] {
+            background-color: #422812;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <a href="index.html"><img src="../static/img/Quickbook_logo.png" alt="QuickBook Logo"></a>
+    <h1>Edit Hotel Information</h1>
+</header>
+
+<main>
+    <form id="editHotelForm">
+        <label for="searchOption">Search Option:</label>
+        <select id="searchOption" name="searchOption">
+            <option value="hotelName">Hotel Name</option>
+            <option value="hotelId">Hotel ID</option>
+        </select><br>
+
+        <label for="searchTerm">Enter Search Term:</label>
+        <input type="text" id="searchTerm" name="searchTerm" required><br>
+
+        <label for="hotelName">Hotel Name:</label>
+        <input type="text" id="hotelName" name="hotelName" required><br>
+
+        <label for="street">Street:</label>
+        <input type="text" id="street" name="street" required><br>
+
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required><br>
+
+        <label for="zip">ZIP Code:</label>
+        <input type="number" id="zip" name="zip" required><br>
+
+        <label for="buildingNumber">Building Number:</label>
+        <input type="number" id="buildingNumber" name="buildingNumber" required><br>
+
+        <label for="country">Country:</label>
+        <input type="text" id="country" name="country" required><br>
+
+        <input type="submit" value="Update Hotel">
+    </form>
+</main>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const editHotelForm = document.getElementById('editHotelForm');
+
+        editHotelForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const searchOption = document.getElementById('searchOption').value;
+            const searchTerm = document.getElementById('searchTerm').value;
+
+            let hotelId = null;
+            if (searchOption === 'hotelId') {
+                hotelId = parseInt(searchTerm, 10);
+            }
+
+            const hotelData = {};
+
+            // Sjekk hvilke felt som er fylt ut og legg dem til i hotelData
+            if (document.getElementById('hotelName').value) {
+                hotelData.hotelName = document.getElementById('hotelName').value;
+            }
+            if (document.getElementById('street').value) {
+                hotelData.street = document.getElementById('street').value;
+            }
+            if (document.getElementById('city').value) {
+                hotelData.city = document.getElementById('city').value;
+            }
+            if (document.getElementById('zip').value) {
+                hotelData.zip = parseInt(document.getElementById('zip').value, 10);
+            }
+            if (document.getElementById('buildingNumber').value) {
+                hotelData.buildingNumber = parseInt(document.getElementById('buildingNumber').value, 10);
+            }
+            if (document.getElementById('country').value) {
+                hotelData.country = document.getElementById('country').value;
+            }
+
+            if (hotelId) {
+                updateHotel(hotelId, hotelData);
+            } else {
+                alert("Please provide a valid Hotel ID to update.");
+            }
+        });
+    });
+
+    function updateHotel(hotelId, hotelData) {
+        fetch(`http://localhost:8080/hotels/update/${hotelId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(hotelData)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                alert('Hotel updated successfully!');
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('An error occurred while updating the hotel.');
+            });
+    }
+
+
+</script>
+</body>
+</html>

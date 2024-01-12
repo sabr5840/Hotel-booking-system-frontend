@@ -58,11 +58,34 @@
         nav li:nth-child(3) a {
             color: #f6e2b8; /* Set the color to the desired color (white) */
         }
+
+        /* Styles for buttons */
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+
+        }
+
+        .button {
+            background-color: #422812;
+            color: #f6e2b8;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #000000; /* Change button color on hover */
+        }
+
     </style>
 </head>
 <body>
 <header>
-    <a href="index.html"><img src="../img/Quickbook_logo.png" alt="QuickBook Logo"/></a>
+    <a href="index.html"><img src="../static/img/Quickbook_logo.png" alt="QuickBook Logo"/></a>
 
     <h1>Welcome to QuickBook</h1>
 </header>
@@ -75,7 +98,17 @@
 </nav>
 
 <main>
-    <!-- Your page content goes here -->
+
+    <div class="button-container">
+        <button class="button" onclick="location.href='viewAll.html'">View All Hotels</button>
+        <button class="button" onclick="location.href='findHotel.html'">Search Hotel</button>
+        <button class="button" onclick="location.href='updateHotel.html'">Edit Hotel</button>
+        <button class="button" onclick="location.href='delete.html'">Delete Hotel</button>
+        <button class="button" onclick="location.href='addHotel.html'">Add Hotel</button>
+
+
+    </div>
+
 </main>
 
 

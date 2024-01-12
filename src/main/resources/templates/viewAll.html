@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickBook Hotel Viewer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f6e2b8;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #fff;
+      color: #422812;
+      padding: 20px;
+      text-align: center;
+    }
+    header img {
+      width: 200px;
+    }
+    main {
+      padding: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #422812;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #422812;
+      color: #f6e2b8;
+    }
+    tr:nth-child(even) {
+      background-color: #c5a364;
+    }
+    tr:nth-child(odd) {
+      background-color: #e0d0a0;
+      color: #422812;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <a href="index.html"><img src="../static/img/Quickbook_logo.png" alt="QuickBook Logo"></a>
+  <h1>Hotel Viewing - All Hotel Listed</h1>
+</header>
+
+<main>
+  <table id="hotelTable">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Hotel Name</th>
+      <th>Street</th>
+      <th>City</th>
+      <th>Zip Code</th>
+      <th>Building Number</th>
+      <th>Country</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Data from the backend will be inserted here using JavaScript -->
+    </tbody>
+  </table>
+</main>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    fetchHotels();
+  });
+
+  async function fetchHotels(page = 0, size = 10) {
+    try {
+      const response = await fetch(`http://localhost:8080/hotels/all?page=${page}&size=${size}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const pageData = await response.json();
+      updateTableWithHotels(pageData.content); // Assuming the data is in a 'content' array
+    } catch (error) {
+      console.error('Error fetching hotels:', error);
+    }
+  }
+
+
+  function updateTableWithHotels(hotels) {
+    const tableBody = document.getElementById('hotelTable').getElementsByTagName('tbody')[0];
+    tableBody.innerHTML = '';
+
+    hotels.forEach(hotel => {
+      let row = tableBody.insertRow();
+      row.insertCell(0).innerHTML = hotel.id;
+      row.insertCell(1).innerHTML = hotel.hotelName;
+      row.insertCell(2).innerHTML = hotel.street;
+      row.insertCell(3).innerHTML = hotel.city;
+      row.insertCell(4).innerHTML = hotel.zip;
+      row.insertCell(5).innerHTML = hotel.buildingNumber;
+      row.insertCell(6).innerHTML = hotel.country;
+    });
+  }
+
+</script>
+</body>
+</html>

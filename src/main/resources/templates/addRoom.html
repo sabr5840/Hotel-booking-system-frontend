@@ -4,83 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuickBook</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f6e2b8;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: white;
-            color: #f6e2b8;
-            padding: 20px;
-            text-align: center;
-        }
-
-        header img {
-            width: 200px;
-        }
-
-
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav li {
-            display: inline;
-            margin: 0 10px;
-        }
-
-        main {
-            padding: 20px;
-            text-align: center;
-        }
-
-
-        form {
-            margin: 0 auto;
-            width: 50%;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 5px;
-            padding-bottom: 40px;
-            padding-top: 40px;
-        }
-
-        form input[type="text"],
-        form input[type="number"] {
-            width: 100%;
-            padding: 5px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            margin-top: 10px;
-        }
-
-        form input[type="submit"] {
-            background-color: #422812;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-        }
-
-        form button[type="button"] {
-            background-color: #422812;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-        }
-
-
-    </style>
+    <link rel="stylesheet" href="../static/css/addRoom.css"><!-- Link to your external CSS file -->
 </head>
 <body>
 <header>
@@ -125,53 +49,6 @@
     </form>
 </main>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var form = document.getElementById('roomForm');
-        var finishButton = document.getElementById('finishAdding');
-
-        var submitForm = function(redirectAfterSubmission) {
-            var hotelId = sessionStorage.getItem('recentHotelId');
-            var roomData = {
-                hotelId: hotelId,
-                roomNumber: document.getElementById('roomNumber').value,
-                numberOfBeds: document.getElementById('numberOfBeds').value,
-                floor: document.getElementById('floor').value,
-                roomType: document.getElementById('roomType').value,
-                pricePerNight: document.getElementById('pricePerNight').value
-            };
-
-            fetch('http://localhost:8080/hotels/' + hotelId + '/rooms', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(roomData),
-            })
-                .then(response => response.json())
-                .then(data => {
-                    alert('Room added successfully');
-                    if (!redirectAfterSubmission) {
-                        form.reset(); // clean the slate
-                    } else {
-                        window.location.href = 'index.html';
-                    }
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                    alert('Error adding room');
-                });
-        };
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            submitForm(false);
-        });
-
-        finishButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            submitForm(true);
-        });
-    });
-
-</script>
+<script src="../static/js/addRoom.js"></script> <!-- Link to your external JavaScript file -->
 </body>
 </html>

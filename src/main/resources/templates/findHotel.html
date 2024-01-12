@@ -4,99 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hotel Details</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f6e2b8;
-      margin: 0;
-      padding: 0;
-    }
 
-    header {
-      background-color: white;
-      color: #f6e2b8;
-      padding: 20px;
-      text-align: center;
-    }
-
-    header img {
-      width: 200px;
-    }
-
-    nav {
-      background-color: #422812;
-      color: #f6e2b8;
-      text-align: center;
-      padding: 10px;
-    }
-
-    nav ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav li {
-      display: inline;
-      margin: 0 10px;
-    }
-
-    main {
-      padding: 20px;
-      text-align: center;
-    }
-
-    footer {
-      background-color: #422812;
-      color: #f6e2b8;
-      text-align: center;
-      padding: 10px;
-    }
-
-    /* Updated styles for About, Services, and Contact links */
-    nav li:nth-child(1) a,
-    nav li:nth-child(2) a,
-    nav li:nth-child(3) a {
-      color: #f6e2b8; /* Set the color to the desired color (white) */
-    }
-
-    /* Styles for the hotel details container */
-    .hotel-details-container {
-      background-color: #ffffff;
-      border-radius: 5px;
-      padding: 20px;
-      margin: 0 auto;
-      width: 50%;
-    }
-
-    /* Styles for the form */
-    form {
-      text-align: left;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 10px;
-      font-weight: bold;
-    }
-
-    input[type="text"] {
-      width: 100%;
-      padding: 5px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-    }
-
-    input[type="submit"] {
-      background-color: #422812;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 3px;
-      cursor: pointer;
-    }
-  </style>
+  <link rel="stylesheet" href="../static/css/findHotel.css"><!-- Link to your external CSS file -->
 </head>
 <body>
 <header>
@@ -136,30 +45,6 @@
   </div>
 </div>
 
-<script>
-  document.querySelector('form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const hotelId = document.getElementById('hotelId').value;
-    fetch(`http://localhost:8080/hotels/find/${hotelId}`)
-            .then(response => response.json())
-            .then(data => showHotelDetails(data))
-            .catch(error => console.error('Error:', error));
-  });
-
-  function showHotelDetails(hotel) {
-    document.getElementById('hotelName').textContent = hotel.hotelName;
-    document.getElementById('street').textContent = hotel.street;
-    document.getElementById('city').textContent = hotel.city;
-    document.getElementById('country').textContent = hotel.country;
-    document.getElementById('zip').textContent = hotel.zip;
-    document.getElementById('rooms').textContent = hotel.rooms.length;
-    document.getElementById('hotelModal').style.display = 'block';
-  }
-
-  function closeModal() {
-    document.getElementById('hotelModal').style.display = 'none';
-  }
-</script>
-
+<script src="../static/js/findHotel.js"></script> <!-- Link to your external JavaScript file -->
 </body>
 </html>

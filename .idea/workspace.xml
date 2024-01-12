@@ -5,17 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="312f71c5-2479-474b-a94b-f4e56a6a552c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/addHotel.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/findHotel.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/updateHotel.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/viewAll.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/addHotel.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/addRoom.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/delete.js.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/findHotel.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/updateHotel.ss.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/viewAll.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/addHotel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/addRoom.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/delete.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/findHotel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/updateHotel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/viewAll.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/Quickbook_logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/img/Quickbook_logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/about.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/addHotel.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/addHotel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/addRoom.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/addRoom.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/contact.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/delete.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/findHotel.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/findHotel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/updateHotel.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/updateHotel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/viewAll.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/viewAll.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +42,8 @@
       <list>
         <option value="package.json" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -49,21 +63,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
@@ -83,7 +98,7 @@
       <workItem from="1704985988208" duration="625000" />
       <workItem from="1704991927667" duration="4348000" />
       <workItem from="1704996371621" duration="16503000" />
-      <workItem from="1705015499705" duration="9601000" />
+      <workItem from="1705015499705" duration="23903000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -101,7 +116,23 @@
       <option name="project" value="LOCAL" />
       <updated>1704985871349</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary=".">
+      <option name="closed" value="true" />
+      <created>1705025228697</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1705025228697</updated>
+    </task>
+    <task id="LOCAL-00004" summary="delete and view">
+      <option name="closed" value="true" />
+      <created>1705060132436</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1705060132436</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,6 +144,8 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="test" />
     <MESSAGE value="Standard html implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="Standard html implemented" />
+    <MESSAGE value="." />
+    <MESSAGE value="delete and view" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete and view" />
   </component>
 </project>

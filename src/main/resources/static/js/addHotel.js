@@ -1,7 +1,7 @@
-document.getElementById('hotelForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+document.getElementById('hotelForm').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-    var hotelData = {
+    const hotelData = {
         hotelName: document.getElementById('hotelName').value,
         street: document.getElementById('street').value,
         city: document.getElementById('city').value,
@@ -11,7 +11,7 @@ document.getElementById('hotelForm').addEventListener('submit', function(e) {
     };
 
     fetch('http://localhost:8080/hotels/create', {
-        method: "POST",
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
@@ -19,12 +19,13 @@ document.getElementById('hotelForm').addEventListener('submit', function(e) {
     })
         .then(response => response.json())
         .then(data => {
-            console.log('Success - now you and add rooms to hotel', data);
-            sessionStorage.setItem('recentHotelId', data.id); // save hotel-ID in session storage
-            window.location.href = 'addRoom.html';
+            console.log('Success:', data);
+            alert('Hotel created successfully!');
+            // Reset form
+            document.getElementById('hotelForm').reset();
         })
         .catch((error) => {
             console.error('Error:', error);
-            alert('Error adding hotel');
+            alert('Error creating hotel');
         });
 });

@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (searchOption === 'hotelId') {
             url = `http://localhost:8080/hotels/delete/${searchTerm}`;
         } else if (searchOption === 'hotelName') {
-            alert('Sletning efter hotelnavn er ikke understøttet');
+            alert('Use hotel id for delteing');
             return;
         }
 
@@ -39,10 +39,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (response.ok) {
                     return response.text();
                 }
-                throw new Error('Noget gik galt med sletningen');
+                throw new Error('something went wrong, when trying to delete');
             })
             .then(() => {
-                alert('Hotellet blev slettet');
+                alert('Hotel deleted');
                 searchTermInput.value = '';
             })
             .catch(error => {

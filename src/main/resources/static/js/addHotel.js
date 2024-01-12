@@ -21,8 +21,8 @@ document.getElementById('hotelForm').addEventListener('submit', function(event) 
         .then(data => {
             console.log('Success:', data);
             alert('Hotel created successfully!');
-            // Reset form
-            document.getElementById('hotelForm').reset();
+            // Redirect to index.html after successful hotel creation
+            window.location.href = 'index.html';
         })
         .catch((error) => {
             console.error('Error:', error);

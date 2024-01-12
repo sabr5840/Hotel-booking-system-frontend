@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickBook</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f6e2b8;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: white;
+            color: #f6e2b8;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header img {
+            width: 200px;
+        }
+
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+
+        form {
+            margin: 0 auto;
+            width: 50%;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            padding-bottom: 40px;
+            padding-top: 40px;
+        }
+
+        form input[type="text"],
+        form input[type="number"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-top: 10px;
+        }
+
+        form input[type="submit"] {
+            background-color: #422812;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        form button[type="button"] {
+            background-color: #422812;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+
+    </style>
+</head>
+<body>
+<header>
+    <a href="index.html"><img src="../static/img/Quickbook_logo.png" alt="QuickBook Logo"/></a>
+    <h1>Add New Room to QuickBook</h1>
+</header>
+
+<main>
+    <form id="roomForm">
+
+        <label for="roomNumber">Room Number</label>
+        <input type="number" id="roomNumber" name="roomNumber" required><br>
+
+        <label for="numberOfBeds">Number of Beds</label>
+        <input type="number" id="numberOfBeds" name="numberOfBeds" required><br>
+
+        <label for="floor">Floor</label>
+        <input type="number" id="floor" name="floor" required><br>
+
+        <label for="roomType">Room Type</label>
+        <select id="roomType" name="roomType" required>
+            <option value="STANDARD">Standard</option>
+            <option value="SINGLE">Single</option>
+            <option value="DOUBLE">Double</option>
+            <option value="SUITE">Suite</option>
+            <option value="DELUXE">Deluxe</option>
+            <option value="FAMILIE">Family</option>
+            <option value="HAVUDSIGT">Ocean View</option>
+            <option value="BALKON">Balcony</option>
+            <option value="STUDIO">Studio</option>
+            <option value="EXECUTIVE">Executive</option>
+            <option value="PENTHOUSE">Penthouse</option>
+            <option value="HANDICAPVENLIGT">Accessible</option>
+        </select><br>
+
+        <label for="pricePerNight">Price Per Night</label>
+        <input type="number" id="pricePerNight" name="pricePerNight" required><br>
+
+        <input type="submit" id="addRoom" value="Add Room">
+        <button type="button" id="finishAdding">Add Room and Finish</button>
+
+    </form>
+</main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var form = document.getElementById('roomForm');
+        var finishButton = document.getElementById('finishAdding');
+
+        var submitForm = function(redirectAfterSubmission) {
+            var hotelId = sessionStorage.getItem('recentHotelId');
+            var roomData = {
+                hotelId: hotelId,
+                roomNumber: document.getElementById('roomNumber').value,
+                numberOfBeds: document.getElementById('numberOfBeds').value,
+                floor: document.getElementById('floor').value,
+                roomType: document.getElementById('roomType').value,
+                pricePerNight: document.getElementById('pricePerNight').value
+            };
+
+            fetch('http://localhost:8080/hotels/' + hotelId + '/rooms', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(roomData),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert('Room added successfully');
+                    if (!redirectAfterSubmission) {
+                        form.reset(); // clean the slate
+                    } else {
+                        window.location.href = 'index.html';
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert('Error adding room');
+                });
+        };
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            submitForm(false);
+        });
+
+        finishButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            submitForm(true);
+        });
+    });
+
+</script>
+</body>
+</html>

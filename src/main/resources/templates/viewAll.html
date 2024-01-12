@@ -22,11 +22,12 @@
     }
     main {
       padding: 20px;
+
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 20px;
+      margin-top: 2px;
     }
     th, td {
       border: 1px solid #422812;
@@ -44,6 +45,30 @@
       background-color: #e0d0a0;
       color: #422812;
     }
+
+    button {
+      background-color: #422812;
+      color: #f6e2b8;
+      border: none;
+      padding: 10px 20px;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: black;
+    }
+
+    .button-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+
   </style>
 </head>
 <body>
@@ -52,6 +77,10 @@
   <h1>Hotel Viewing - All Hotel Listed</h1>
 </header>
 
+<div class="button-container">
+  <button id="prevButton">Tilbage</button>
+  <button id="nextButton">Frem</button>
+</div>
 <main>
   <table id="hotelTable">
     <thead>
@@ -74,6 +103,20 @@
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     fetchHotels();
+  });
+
+  let currentPage = 0;
+
+  document.getElementById('prevButton').addEventListener('click', () => {
+    if (currentPage > 0) {
+      currentPage--;
+      fetchHotels(currentPage);
+    }
+  });
+
+  document.getElementById('nextButton').addEventListener('click', () => {
+    currentPage++;
+    fetchHotels(currentPage);
   });
 
   async function fetchHotels(page = 0, size = 10) {

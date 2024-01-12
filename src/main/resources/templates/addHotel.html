@@ -121,14 +121,20 @@
     })
             .then(response => response.json())
             .then(data => {
-              console.log('Success:', data);
-              alert('Hotel added successfully');
+              console.log('Success - now you and add rooms to hotel', data);
+              sessionStorage.setItem('recentHotelId', data.id); // save hotel-ID in session storage
+              window.location.href = 'addRoom.html';
             })
+
             .catch((error) => {
               console.error('Error:', error);
               alert('Error adding hotel');
             });
   });
+
+
+
+
 </script>
 
 </body>
